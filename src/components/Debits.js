@@ -34,8 +34,7 @@ render(){
       {this.debitView()}
       <AccountBalance accountBalance ={this.props.accountBalance}/>
       <form onSubmit={this.handleSubmit}>
-        <input type="text" name = "description" value ={this.state.description} onChange ={this.state}>
-        </>
+      
       <label>Description: 
         <input type="text" name="description" />
         </label>

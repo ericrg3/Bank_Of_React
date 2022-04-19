@@ -34,8 +34,6 @@ render(){
       {this.creditView()}
       <AccountBalance accountBalance ={this.props.accountBalance}/>
       <form onSubmit={this.handleSubmit}>
-        <input type="text" name = "description" value ={this.state.description} onChange ={this.state}>
-        </>
       <label>Description: 
         <input type="text" name="description" />
         </label>
@@ -43,11 +41,10 @@ render(){
         <label> Amount:
         <input type="number" name="amount" />
         </label>
-        
-        <button type="submit">Add Credits</button>
+
+        <button type="submit">Add Debit</button>
+
       </form>
-      
-      
       <Link to="/">Return to Home</Link>
       <br></br>
       <Link to="/debit">Debits</Link>
