@@ -1,24 +1,61 @@
-// src/components/Credits.js
+// src/components/Debits.js
 
-const Credits = (props) => {
-	let creditsView = () => {
-        const { credits } = props;
-        return credits.map((credits) => {
-            let date = credits.date.slice(0,10);
-            return <li key={credits.id}>{credits.amount} {credits.description} {date}</li>
-        }) 
+import React, {Component} from "react";
+import {Link} from 'react-router-dom';
+import AccountBalance from "./AccountBalance";
+
+class Credits extends Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      description: "",
+      amount: 0,
     }
-    return (
-    	<div>
-    	   <h1>Credits</h1>
-    	   {creditsView()}
-           <form onSubmit={props.addCredits}>
-             <input type="text" name="description" />
-             <input type="number" name="amount" />
-             <button type="submit">Add Credit</button>
-           </form>
-    	</div>
-
-    )
+  }
+  // When the user name input is changed, capture the input and update the state (user.userName)
+  handleChange = (e) => {
+    const updatedUser = {...this.state.user};
+    const inputField = e.target.name;
+    const inputValue = e.target.value;
+  }
+  
+// When user clicked "Log In" button, store user data and then redirect to "User Profile" page
+handleSubmit = (e) => {
+  e.preventDefault()
+  this.props.addCredits(this.state.Debit)
+  this.setState({redirect: true})
 }
-export default Credits;
+
+render(){
+  return (
+    <div>
+      <img src="https://picsum.photos/200/200" alt="bank"/>
+      <h1>Credits</h1>
+      {this.creditView()}
+      <AccountBalance accountBalance ={this.props.accountBalance}/>
+      <form onSubmit={this.handleSubmit}>
+        <input type="text" name = "description" value ={this.state.description} onChange ={this.state}>
+        </>
+      <label>Description: 
+        <input type="text" name="description" />
+        </label>
+
+        <label> Amount:
+        <input type="number" name="amount" />
+        </label>
+        
+        <button type="submit">Add Credits</button>
+      </form>
+      
+      
+      <Link to="/">Return to Home</Link>
+      <br></br>
+      <Link to="/debit">Debits</Link>
+    </div>
+    );
+  }
+}
+
+
+
+export default Debits;
