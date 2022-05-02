@@ -30,8 +30,8 @@ class App extends Component {
     try{
       let infoDebits = await axios.get(linkforDebitsAPI);
       let infoCredits = await axios.get(linkforCreditsAPI);
-      this.setState({Debits: infoDebits.data, Debits: infoDebits.data}); //store data
-      this.setState({Credits: infoCredits.data, Credits: infoCredits.data});
+      this.setState({Debits: infoDebits.data}); //store data
+      this.setState({Credits: infoCredits.data});
     }
     catch (error){
       if(error.response){
@@ -45,18 +45,18 @@ class App extends Component {
     const newCredits = this.state.creditsArray;
     newCredits.push(credits);// adding a new value
     
-    const updatedAccountBalance = this.state.accountBalance;
+    let updatedAccountBalance = this.state.accountBalance;
     updatedAccountBalance = updatedAccountBalance + + credits.amount; // + + is adding more credit
-    this.setState({credits: updatedCredits, accountBalance: updatedAccountBalance});
+    this.setState({credits: Credits, accountBalance: updatedAccountBalance});
   }
 
   addDebits = (debits) => {
     const newDebits = this.state.debitsArray;
     newDebits.push(debits);// adding a new value
     
-    const updatedAccountBalance = this.state.accountBalance;
+    let updatedAccountBalance = this.state.accountBalance;
     updatedAccountBalance = updatedAccountBalance - - debits.amount; // - - is subtracting more credit
-    this.setState({debits: updatedCredits, accountBalance: updatedAccountBalance});
+    this.setState({debits: Credits, accountBalance: updatedAccountBalance});
   }
   
   // Update state's currentUser (userName) after "Log In" button is clicked
